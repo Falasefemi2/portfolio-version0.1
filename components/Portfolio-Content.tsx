@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-"use client";
+"use client"
+
 import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 
-export default function PortfolioContemt() {
-
+export default function PortfolioContent() {
     const fadeInUp = {
         initial: { opacity: 0, y: 60 },
         animate: { opacity: 1, y: 0 },
@@ -12,9 +12,9 @@ export default function PortfolioContemt() {
     }
 
     return (
-        <section id="home" className="min-h-screen flex items-center justify-center">
+        <section id="home" className="min-h-screen flex items-center justify-center px-4">
             <motion.div
-                className="text-center"
+                className="text-center max-w-3xl"
                 initial="initial"
                 animate="animate"
                 variants={fadeInUp}
@@ -28,6 +28,5 @@ export default function PortfolioContemt() {
                 </Button>
             </motion.div>
         </section>
-
     )
 }

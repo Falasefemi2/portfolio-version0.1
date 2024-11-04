@@ -27,6 +27,11 @@ import {
 import {
     Textarea
 } from "@/components/ui/textarea"
+import emailjs from '@emailjs/browser';
+import { useState } from "react";
+
+
+
 
 const formSchema = z.object({
     name: z.string()
@@ -43,6 +48,9 @@ const formSchema = z.object({
 
 
 export default function MyForm() {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -53,20 +61,35 @@ export default function MyForm() {
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsSubmitting(true);
         try {
-            console.log(values)
-            toast(
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-                </pre>
+            const templateParams = {
+                from_name: values.name,
+                from_email: values.email,
+                message: values.message,
+            };
+
+            const response = await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
             );
 
+            if (response.status === 200) {
+                toast.success("Message sent successfully!");
+                form.reset(); // Reset form after successful submission
+            }
+
         } catch (error) {
-            console.error("Form submission error", error)
-            toast.error("Failed to submit the form. Please try again.");
+            console.error("Form submission error", error);
+            toast.error("Failed to send message. Please try again.");
+        } finally {
+            setIsSubmitting(false);
         }
     }
+
 
 
     return (
@@ -120,9 +143,16 @@ export default function MyForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="w-full">Submit</Button>
+                <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? "Sending..." : "Submit"}
+                </Button>
             </form>
         </Form>
 
     )
 }
+

@@ -30,12 +30,47 @@ export default function PortfolioProject() {
 
 
     const projects: Project[] = [
-        { id: 1, image: aiplanner, title: "AI Planner", description: "A brief description of AI Planner.", links: " https://ai-social-planner-9wbo-do7c38dwk-falase-femis-projects.vercel.app/sign-in?redirect_url=https%3A%2F%2Fai-social-planner-9wbo-do7c38dwk-falase-femis-projects.vercel.app%2F" },
-        { id: 2, image: eazetrades, title: "Eaze Trades", description: "A brief description of Eaze Trades.", links: "https://eazetrades.vercel.app/" },
-        { id: 3, image: fitness, title: "Fitness Planner", description: "A brief description of Fitness Planner.", links: "https://fitness-planner-pi.vercel.app/" },
-        { id: 4, image: game, title: "Game Hive", description: "A brief description of Game Hive.", links: "https://gamehive-sooty.vercel.app/" },
-        { id: 5, image: homes, title: "Homes", description: "A brief description of Homes.", links: "https://homes-silk.vercel.app/" },
-        { id: 6, image: uploadmusic, title: "Upload Music", description: "A brief description of Upload Music.", links: "https://uploadmusic.vercel.app/" },
+        {
+            id: 1,
+            image: aiplanner,
+            title: "AI Social Planner",
+            description: "An AI-powered tool that helps users customize and schedule personalized social media posts. Perfect for content creators and businesses looking to optimize engagement and streamline their social media strategy.",
+            links: " https://ai-social-planner-9wbo-do7c38dwk-falase-femis-projects.vercel.app/sign-in?redirect_url=https%3A%2F%2Fai-social-planner-9wbo-do7c38dwk-falase-femis-projects.vercel.app%2F"
+        },
+        {
+            id: 2,
+            image: eazetrades,
+            title: "Eaze Trades",
+            description: "A marketplace platform where sellers and buyers can connect to trade goods and services seamlessly. Built with Next.js for the frontend and PHP on the backend, Eaze Trades offers a user-friendly interface and a secure environment for online transactions.",
+            links: "https://eazetrades.vercel.app/"
+        },
+        {
+            id: 3,
+            image: fitness,
+            title: "Fitness Planner",
+            description: "A personalized fitness tool that generates tailored exercise routines based on user preferences and goals. Built with Next.js and powered by Google Gemini, Fitness Planner helps users stay on track with customized workout plans.",
+            links: "https://fitness-planner-pi.vercel.app/"
+        },
+        {
+            id: 4,
+            image: game,
+            title: "Game Hive",
+            description: "A comprehensive gaming platform where users can explore detailed information on a wide variety of games, including game descriptions, genres, and more. Game Hive is the go-to hub for all gaming enthusiasts looking to discover and learn about their favorite titles.",
+            links: "https://gamehive-sooty.vercel.app/"
+        },
+        {
+            id: 5,
+            image: homes,
+            title: "Homes",
+            description: "A modern platform for listing and renting homes, providing travelers with unique stays and property owners with a simple way to connect with guests. Discover a variety of accommodations to suit every travel style and need.",
+            links: "https://homes-silk.vercel.app/"
+        },
+        {
+            id: 6,
+            image: uploadmusic, title: "Upload Music",
+            description: "A music-sharing platform that allows users to upload, store, and listen to their favorite tracks. Enjoy a seamless experience as you build a personal collection and stream music from anywhere.",
+            links: "https://uploadmusic.vercel.app/"
+        },
     ];
 
     return (

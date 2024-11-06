@@ -27,7 +27,7 @@ import {
 import {
     Textarea
 } from "@/components/ui/textarea"
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { useState } from "react";
 
 
@@ -64,22 +64,18 @@ export default function MyForm() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
         try {
-            const templateParams = {
-                from_name: values.name,
-                from_email: values.email,
-                message: values.message,
-            };
+            const response = await fetch('/api/email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(values),
+            });
 
-            const response = await emailjs.send(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-                templateParams,
-                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-            );
-
-            if (response.status === 200) {
-                toast.success("Message sent successfully!");
-                form.reset(); // Reset form after successful submission
+            if (response.ok) {
+                const data = await response.json();
+                toast.success(data.message);
+                form.reset();
+            } else {
+                toast.error("Failed to send message. Please try again.");
             }
 
         } catch (error) {
@@ -89,6 +85,8 @@ export default function MyForm() {
             setIsSubmitting(false);
         }
     }
+
+
 
 
 

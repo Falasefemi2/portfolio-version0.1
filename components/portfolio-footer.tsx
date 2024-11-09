@@ -14,7 +14,7 @@ export default function PortfolioFooter() {
                         <Linkedin size={24} />
                         <span className="sr-only">LinkedIn</span>
                     </a>
-                    <a href="femifalase228@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href="mailto:femifalase228@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                         <Mail size={24} />
                         <span className="sr-only">Email</span>
                     </a>
